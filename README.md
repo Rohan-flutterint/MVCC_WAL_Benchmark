@@ -1,8 +1,8 @@
 # MVCC Benchmark Playground
 
-This repository is a **minimal implementation of MVCC (Multi-Version Concurrency Control)** in multiple languages, with a focus on **performance, memory behavior**.
+This repository is a **minimal implementation of MVCC (Multi-Version Concurrency Control) & WAL (Write Ahead Log)** in multiple languages, with a focus on **performance, memory behavior**.
 
-The goal is **not** to build a production database, but to **understand how MVCC behaves under load** and how different language runtimes react to version churn.
+The goal is **not** to build a production database, but to **understand how MVCC & WAL behaves under load** and how different language runtimes react to version churn.
 
 ---
 
@@ -18,7 +18,6 @@ The goal is **not** to build a production database, but to **understand how MVCC
   - C++
 
 This project intentionally avoids:
-- WAL
 - Indexes
 - Locks
 - Disk IO
@@ -72,61 +71,61 @@ Build binaries explicitly before benchmarking.
 
 ### Go
 ```sh
-go build -o mvcc_go mvcc.go
-./mvcc_go
+go build -o mvcc_wal_go mvcc_wal.go
+./mvcc_wal_go
 ```
 
 ### Rust
 ```sh
-rustc -O mvcc.rs -o mvcc_rust
-./mvcc_rust
+rustc -O mvcc_wal.rs -o mvcc_wal_rust
+./mvcc_wal_rust
 ```
 
 ### C++
 ```sh
-g++ -O3 mvcc.cpp -o mvcc_cpp
+g++ -O3 mvcc_wal.cpp -o mvcc_wal_cpp
 ./mvcc_cpp
 ```
 
 ### Java
 ```sh
-javac MVCC.java
-java MVCC
+javac MVCC_WAL.java
+java MVCC_WAL
 ```
 
 
 ## RESULTS
 
 ```sh
------------------------------
-Go done: 49999999 Versions
+--------------------------
+Go MVCC & WAL done: 999
 
-real    0m1.948s
-user    0m2.513s
-sys     0m0.454s
------------------------------
+real    0m5.375s
+user    0m0.027s
+sys     0m0.331s
+--------------------------
 
------------------------------
-Java done: 49999999 Versions
+--------------------------
+Java MVCC & WAL done: 999
 
-real    0m1.383s
-user    0m3.959s
-sys     0m0.864s
------------------------------
+real    0m5.360s
+user    0m0.171s
+sys     0m0.334s
+--------------------------
 
------------------------------
-C++ done: 49999999 Versions
+--------------------------
+C++ MVCC & WAL done: 998
 
-real    0m0.402s
-user    0m0.115s
-sys     0m0.086s
------------------------------
+real    0m5.455s
+user    0m0.007s
+sys     0m0.341s
+--------------------------
 
------------------------------
-Rust done: 49999999 Versions
+--------------------------
+Rust MVCC & WAL done: 999
 
-real    0m0.375s
-user    0m0.121s
-sys     0m0.038s
------------------------------
+real    0m5.257s
+user    0m0.012s
+sys     0m0.366s
+--------------------------
 ```

@@ -3,28 +3,28 @@
 set -e
 
 printf "\n"
-echo "----------------------"
-go build -o mvcc_go mvcc.go
-time ./mvcc_go
-echo "----------------------"
+echo "--------------------------"
+go build -o mvcc_wal_go mvcc_wal.go
+time ./mvcc_wal_go
+echo "--------------------------"
 
 printf "\n"
-echo "----------------------"
-javac MVCC.java
-time java MVCC
-echo "----------------------"
+echo "--------------------------"
+javac MVCC_WAL.java
+time java MVCC_WAL
+echo "--------------------------"
 
 printf "\n"
-echo "----------------------"
-g++ -O3 mvcc.cpp -o mvcc_cpp
-time ./mvcc_cpp
-echo "----------------------"
+echo "--------------------------"
+g++ -O3 mvcc_wal.cpp -o mvcc_wal_cpp
+time ./mvcc_wal_cpp
+echo "--------------------------"
 
 printf "\n"
-echo "----------------------"
-rustc -O mvcc.rs -o mvcc_rust
-time ./mvcc_rust
-echo "----------------------"
+echo "--------------------------"
+rustc -O mvcc_wal.rs -o mvcc_wal_rust
+time ./mvcc_wal_rust
+echo "--------------------------"
 
 # removing the generated binaries and class files
-rm -f mvcc_go mvcc_cpp mvcc_rust MVCC.class Version.class
+rm -f mvcc_wal_go mvcc_wal_cpp mvcc_wal_rust MVCC_WAL.class Version.class WAL.class wal_cpp.log wal_go.log wal_rust.log wal_java.log
