@@ -1,4 +1,4 @@
-# MVCC Benchmark Playground
+# MVCC & WAL Benchmark Playground
 
 This repository is a **minimal implementation of MVCC (Multi-Version Concurrency Control) & WAL (Write Ahead Log)** in multiple languages, with a focus on **performance, memory behavior**.
 
